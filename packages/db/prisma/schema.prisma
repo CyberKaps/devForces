@@ -19,6 +19,7 @@ model User {
   email         String        @unique
   password      String
   role          Role
+  leaderboard   Leaderboard[]
 
 }
 
@@ -32,6 +33,7 @@ model Contest {
   title                          String
   startTime                      DateTime
   contestToChallengeMapping      ContestToChallengeMapping[]
+  leaderboard                    Leaderboard[]
 
 }
 
@@ -72,6 +74,8 @@ model Leaderboard {
   contestId     String
   userId        String
   rank          Int
+  contest       Contest       @relation(fields: [contestId], references: [id])
+  user          User          @relation(fields: [userId], references: [id])
 
   @@unique([contestId, rank])
 }
