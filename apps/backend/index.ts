@@ -1,5 +1,8 @@
 
 import express from "express";
+import userRouter from "./routes/user";
+import adminRouter from "./routes/admin";
+import contestRouter from "./routes/contest";
 
 const app = express();
 
